@@ -1,0 +1,7 @@
+[package]
+name = "volume_prefix"
+version = "0.1.0"
+authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
+
+[dependencies]
+libc = "0.2.22"
