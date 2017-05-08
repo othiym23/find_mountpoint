@@ -25,14 +25,13 @@ Since developing the macOS version, I've written a (slower) version that
 doesn't rely on libc and should work on all other variants of UNIX.  There's
 also an even simpler version for Windows, which passes its (pretty simple)
 tests on AppVeyor, so maybe it will work for you, friendly Windows developer,
-as wel tests on AppVeyor, so maybe it will work for you, friendly Windows
-developer, as well. Sample code for the API I'm using on Winodws is [thin on
-the ground][lol].
+as well. Sample code for the API I'm using on Windows is [thin on the
+ground][lol].
 
-That said, It took me less than half an hour to get the project up and running
-on Windows, thanks to [this configuration][appveyor-rust] and `rustup`, and
-it's pretty impressive how quickly everything came together. Thanks, Rust!
-Thust!
+That said, It took me less than half an hour to get the project up and tests
+passing on AppVeyor, thanks to [this configuration][appveyor-rust] and
+`rustup`. It's pretty impressive how quickly everything came together.  Thanks,
+Rust!  Thust!
 
 This is my first published Rust crate, so I'm sure even this short chunk of
 code has problems that I would love help in fixing. There aren't a lot of
