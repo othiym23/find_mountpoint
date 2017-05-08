@@ -1,6 +1,7 @@
 [package]
 authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
 description = "find the mountpoint (or prefix, on Windows) for a provided path"
+documentation = "https://docs.rs/crate/find_mountpoint"
 homepage = "https://github.com/othiym23/find_mountpoint"
 license = "MIT"
 name = "find_mountpoint"
