@@ -6,6 +6,8 @@ mod os;
 pub use os::unix::*;
 #[cfg(target_os = "macos")]
 pub use os::macos::*;
+#[cfg(windows)]
+pub use os::windows::*;
 
 #[derive(Debug)]
 pub enum Error {

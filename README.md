@@ -38,10 +38,13 @@ Until then, I needed this for my own nefarious purposes, so here it is.
 
 ## limitations
 
-This was developed for my own use on macOS. It uses `OsStrExt` and other
-features that are explicitly tied to macOS and Linux. If somebody wants to send
-me a PR with an alternative implementation / an extension of this that works
-for Windows, I'll happily work with you to get it added.
+This was developed for my own use on macOS. I've written a (slower) version
+that doesn't rely on libc and should work on all other variants of UNIX.
+There's also a completely untested version for Windows that is even simpler,
+but sample code for the APIs I'm using is [thin on the ground][lol]. When I get
+a chance I'll check this out on Windows, but if you notice something broken
+first, please file an issue.
 
 [docs]: http://docs.rs/find_mountpoint
+[lol]: https://github.com/search?utf8=%E2%9C%93&q=PrefixComponent+extension%3Ars&type=Code&ref=advsearch&l=&l=
 [statfs]: https://doc.rust-lang.org/libc/x86_64-apple-darwin/libc/fn.statfs.html
