@@ -41,14 +41,20 @@ mod tests {
     fn integration_basic() {
         let sample = Path::new("./Cargo.toml").canonicalize().unwrap();
         let result = find_mountpoint_pre_canonicalized(sample.as_path());
+        #[cfg(unix)]
         assert_eq!(result.unwrap().to_str().unwrap(), "/");
+        #[cfg(windows)]
+        assert_eq!(result.unwrap().to_str().unwrap(), "\\\\?\\C:");
     }
 
     #[test]
     fn integration_basic_without_canonicalization() {
         let sample = Path::new("./Cargo.toml");
         let result = find_mountpoint(sample);
+        #[cfg(unix)]
         assert_eq!(result.unwrap().to_str().unwrap(), "/");
+        #[cfg(windows)]
+        assert_eq!(result.unwrap().to_str().unwrap(), "\\\\?\\C:");
     }
 
     // only run this if you have a Boot Camp volume named energeia on your system.
@@ -61,14 +67,14 @@ mod tests {
     }
 
     #[test]
-    #[should_panic(expected = "No such file or directory")]
+    #[should_panic]
     fn nonexistent_path() {
         let sample = Path::new("/Volumes/NOxSUCHxMOUNT/prj/Cargo.toml");
         find_mountpoint_pre_canonicalized(sample).unwrap();
     }
 
     #[test]
-    #[should_panic(expected = "No such file or directory")]
+    #[should_panic]
     fn nonexistent_path_without_canonicalization() {
         let sample = Path::new("../vegan/porkchop/sandwiches");
         find_mountpoint(sample).unwrap();
