@@ -1,5 +1,5 @@
 [package]
-name = "volume_prefix"
+name = "find_mountpoint"
 version = "0.1.0"
 authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
 

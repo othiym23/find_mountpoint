@@ -1,12 +1,11 @@
 #![feature(test)]
 extern crate test;
 
-
 #[cfg(test)]
 mod tests {
-    extern crate volume_prefix;
+    extern crate find_mountpoint;
 
-    use self::volume_prefix::*;
+    use self::find_mountpoint::*;
     use std::path::Path;
     use test::Bencher;
 

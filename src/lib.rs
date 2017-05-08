@@ -60,10 +60,11 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
     Ok(&Path::new(mountpoint))
 }
 
-/// Find the mountpoint for the volume containing the provided path. Canonicalizes the path before
-/// calling `find_mountpoint_pre_canonicalized`. Because canonicalization produces a PathBuf,
-/// lifetime management requires returning an owned path, hence returns a PathBuf instead of a
-/// reference to a Path.
+/// Find the mountpoint for the volume containing the provided path.
+///
+/// Canonicalizes the path before calling `find_mountpoint_pre_canonicalized`. Because
+/// canonicalization produces a PathBuf, lifetime management requires returning an owned path,
+/// hence returns a PathBuf instead of a reference to a Path.
 pub fn find_mountpoint(path: &Path) -> Result<PathBuf, Error> {
     let canonicalized = path.canonicalize()?;
     let found = find_mountpoint_pre_canonicalized(canonicalized.as_path())?;
