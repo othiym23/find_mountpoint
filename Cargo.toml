@@ -1,11 +1,15 @@
 [package]
-name = "find_mountpoint"
-description = "find the mountpoint (or prefix, on Windows) for a provided path"
-version = "0.1.0"
 authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
-license = "MIT"
-repository = "https://github.com/othiym23/find_mountpoint"
+description = "find the mountpoint (or prefix, on Windows) for a provided path"
 homepage = "https://github.com/othiym23/find_mountpoint"
+license = "MIT"
+name = "find_mountpoint"
+repository = "https://github.com/othiym23/find_mountpoint"
+version = "1.0.0"
 
-[target.'cfg(target_os = "macos")'.dependencies]
+[target]
+
+[target."cfg(target_os = \"macos\")"]
+
+[target."cfg(target_os = \"macos\")".dependencies]
 libc = "0.2.22"
