@@ -1,9 +1,8 @@
+#[cfg(unix)]
 use super::super::Error;
 
-use std::fs::symlink_metadata;
+#[cfg(unix)]
 use std::path::{Path, PathBuf};
-// needed to get dev for metadata (aliased as st_dev on Linux)
-use std::os::unix::fs::MetadataExt;
 
 /// Find the mountpoint for the volume containing the (previously canonicalized) provided path.
 ///
@@ -12,6 +11,10 @@ use std::os::unix::fs::MetadataExt;
 /// It presumes that you will be passing in fully-qualified canonical paths.
 #[cfg(unix)]
 pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
+    use std::fs::symlink_metadata;
+    // needed to get dev for metadata (aliased as st_dev on Linux)
+    use std::os::unix::fs::MetadataExt;
+
     let mut lstats = symlink_metadata(path)?;
     let start_dev = lstats.dev();
 
