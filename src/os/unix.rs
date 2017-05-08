@@ -1,6 +1,5 @@
 use super::super::Error;
 
-use std;
 use std::fs::symlink_metadata;
 use std::path::{Path, PathBuf};
 // needed to get dev for metadata (aliased as st_dev on Linux)
@@ -17,14 +16,15 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
 
     let mut mountpoint = path;
     loop {
-        mountpoint = match mountpoint.parent() {
+        let current = match mountpoint.parent() {
             Some(p) => p,
             None => return Ok(mountpoint),
         };
-        lstats = symlink_metadata(mountpoint)?;
+        lstats = symlink_metadata(current)?;
         if lstats.dev() != start_dev {
             break;
         }
+        mountpoint = current;
     }
 
     // I may remove these later, but for now I want to verify that these invariants hold in the

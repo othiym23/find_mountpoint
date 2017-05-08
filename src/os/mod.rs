@@ -1,4 +1,4 @@
-#[cfg(target_os = "macos")]
-pub mod macos;
-#[cfg(all(unix, not(target_os = "macos")))]
+#[allow(dead_code)]
 pub mod unix;
+#[allow(dead_code)]
+pub mod macos;
