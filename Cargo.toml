@@ -2,6 +2,7 @@
 name = "find_mountpoint"
 version = "0.1.0"
 authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
+license = "MIT"
 
 [dependencies]
 libc = "0.2.22"
