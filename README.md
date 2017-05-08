@@ -51,6 +51,6 @@ fantastic!
 Until then, I needed this for my own nefarious purposes, so here it is.
 
 [appveyor-rust]: https://github.com/starkat99/appveyor-rust/
-[docs]: http://docs.rs/crate/find_mountpoint
+[docs]: https://docs.rs/find_mountpoint
 [lol]: https://github.com/search?utf8=%E2%9C%93&q=PrefixComponent+extension%3Ars&type=Code&ref=advsearch&l=&l=
 [statfs]: https://doc.rust-lang.org/libc/x86_64-apple-darwin/libc/fn.statfs.html
