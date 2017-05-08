@@ -1,11 +1,11 @@
 [package]
 name = "find_mountpoint"
-description = "wrap `libc::statfs` to find the mountpoint for a provided path"
+description = "find the mountpoint (or prefix, on Windows) for a provided path"
 version = "0.1.0"
 authors = ["Forrest L Norvell <ogd@aoaioxxysz.net>"]
 license = "MIT"
 repository = "https://github.com/othiym23/find_mountpoint"
 homepage = "https://github.com/othiym23/find_mountpoint"
 
-[dependencies]
+[target.'cfg(target_os = "macos")'.dependencies]
 libc = "0.2.22"
