@@ -29,7 +29,7 @@ impl From<String> for Error {
     }
 }
 
-/// Find the portion of a canonicalized path that is the mount point for the provided path.
+/// Find the mountpoint for the volume containing the (previously canonicalized) provided path.
 ///
 /// This uses `libc::statfs`, and as a result is (partially) unsafe.
 ///
@@ -90,7 +90,9 @@ mod tests {
         assert_eq!(result.unwrap().to_str().unwrap(), "/");
     }
 
+    // only run this if you have a Boot Camp volume named energeia on your system.
     #[test]
+    #[ignore]
     fn integration_another_fs() {
         let sample = Path::new("/Volumes/energeia/CONFIG.SYS");
         let result = find_mountpoint_pre_canonicalized(sample);
