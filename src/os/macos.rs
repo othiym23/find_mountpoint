@@ -12,6 +12,7 @@ use super::super::Error;
 ///
 /// It presumes that you will be passing in fully-qualified canonical paths (to minimize allocation
 /// overhead, because the mountpoint that gets returned is a slice of the path that was passed in).
+#[cfg(target_os = "macos")]
 pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
     let cstr = CString::new(path.as_os_str().as_bytes())?;
 
@@ -42,6 +43,7 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
 /// Canonicalizes the path before calling `find_mountpoint_pre_canonicalized`. Because
 /// canonicalization produces a PathBuf, lifetime management requires returning an owned path,
 /// hence returns a PathBuf instead of a reference to a Path.
+#[cfg(target_os = "macos")]
 pub fn find_mountpoint(path: &Path) -> Result<PathBuf, Error> {
     let canonicalized = path.canonicalize()?;
     let found = find_mountpoint_pre_canonicalized(canonicalized.as_path())?;

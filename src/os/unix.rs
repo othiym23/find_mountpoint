@@ -10,6 +10,7 @@ use std::os::unix::fs::MetadataExt;
 /// This version relies on Unix-only extensions, but is safe.
 ///
 /// It presumes that you will be passing in fully-qualified canonical paths.
+#[cfg(unix)]
 pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
     let mut lstats = symlink_metadata(path)?;
     let start_dev = lstats.dev();
@@ -40,6 +41,7 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
 /// Canonicalizes the path before calling `find_mountpoint_pre_canonicalized`. Because
 /// canonicalization produces a PathBuf, lifetime management requires returning an owned path,
 /// hence returns a PathBuf instead of a reference to a Path.
+#[cfg(unix)]
 pub fn find_mountpoint(path: &Path) -> Result<PathBuf, Error> {
     let canonicalized = path.canonicalize()?;
     let found = find_mountpoint_pre_canonicalized(canonicalized.as_path())?;
