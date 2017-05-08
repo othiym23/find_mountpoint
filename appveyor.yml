@@ -87,6 +87,7 @@ environment:
 # to allow build failures on (usually nightly at least is a wise choice). This will prevent a build
 # or test failure in the matching channels/targets from failing the entire build.
 matrix:
+  fast_finish: true
   allow_failures:
     - channel: nightly
 
