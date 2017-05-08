@@ -2,6 +2,8 @@ extern crate libc;
 
 mod os;
 
+#[cfg(all(unix, not(target_os = "macos")))]
+pub use os::unix::*;
 #[cfg(target_os = "macos")]
 pub use os::macos::*;
 
