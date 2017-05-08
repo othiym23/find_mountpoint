@@ -1,8 +1,7 @@
-use std;
-use std::ffi::{CString, CStr, OsStr};
-use std::os::unix::ffi::OsStrExt;
+#[cfg(target_os = "macos")]
 use std::path::{Path, PathBuf};
 
+#[cfg(target_os = "macos")]
 use super::super::Error;
 
 /// Find the mountpoint for the volume containing the (previously canonicalized) provided path.
@@ -14,6 +13,10 @@ use super::super::Error;
 #[cfg(target_os = "macos")]
 pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
     extern crate libc;
+
+    use std;
+    use std::ffi::{CString, CStr, OsStr};
+    use std::os::unix::ffi::OsStrExt;
 
     let cstr = CString::new(path.as_os_str().as_bytes())?;
 
