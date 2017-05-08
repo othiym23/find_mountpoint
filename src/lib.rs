@@ -1,5 +1,3 @@
-extern crate libc;
-
 mod os;
 
 #[cfg(all(unix, not(target_os = "macos")))]
