@@ -34,7 +34,7 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
     // I may remove these later, but for now I want to verify that these invariants hold in the
     // wild.
     assert!(path.starts_with(mountpoint));
-    assert!(mountpoint.as_os_str().len() > 0);
+    assert!(!mountpoint.as_os_str().is_empty());
 
     Ok(mountpoint)
 }
@@ -42,8 +42,8 @@ pub fn find_mountpoint_pre_canonicalized(path: &Path) -> Result<&Path, Error> {
 /// Find the mountpoint for the volume containing the provided path.
 ///
 /// Canonicalizes the path before calling `find_mountpoint_pre_canonicalized`. Because
-/// canonicalization produces a PathBuf, lifetime management requires returning an owned path,
-/// hence returns a PathBuf instead of a reference to a Path.
+/// canonicalization produces a `PathBuf`, lifetime management requires returning an owned path,
+/// hence returns a `PathBuf` instead of a reference to a Path.
 #[cfg(unix)]
 pub fn find_mountpoint(path: &Path) -> Result<PathBuf, Error> {
     let canonicalized = path.canonicalize()?;
