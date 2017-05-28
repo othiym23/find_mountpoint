@@ -6,7 +6,7 @@ homepage = "https://github.com/othiym23/find_mountpoint"
 license = "MIT"
 name = "find_mountpoint"
 repository = "https://github.com/othiym23/find_mountpoint"
-version = "1.0.2"
+version = "1.0.3"
 
 [target]
 
